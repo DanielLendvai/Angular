@@ -1,0 +1,23 @@
+{
+  "name": "angular",
+  "version": "1.0.0",
+  "description": "Examples to learn angular with typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielLendvai/Angular.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielLendvai/Angular/issues"
+  },
+  "homepage": "https://github.com/DanielLendvai/Angular#readme",
+  "dependencies": {
+    "typescript": "^4.9.5"
+  }
+}
