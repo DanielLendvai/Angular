@@ -38,3 +38,6 @@ function swapNumbers(num1, num2) {
 }
 swapNumbs = swapNumbers(10, 20);
 console.log(swapNumbs[0]);
+let department; //try to avoid
+department = "IT";
+department = 10;
