@@ -1,1 +1,12 @@
-<p>rooms works!</p>
+<!-- inline binding -->
+<h1>Welcome to {{hotelName}}</h1>
+
+<div [hidden]="hideRooms">
+    Number of rooms:    
+    <div [innerText]="numberOfRooms"></div>
+    <!-- document.getElementById("numberOfRooms").innerText = numberOfRooms; -->
+</div>
+
+<!-- event binding -->
+<button (click)="toggle()">Toggle</button>
+<!-- <button onClick="fnct" /> -->
