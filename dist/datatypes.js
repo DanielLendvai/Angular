@@ -41,3 +41,4 @@ console.log(swapNumbs[0]);
 let department; //try to avoid
 department = "IT";
 department = 10;
+//# sourceMappingURL=datatypes.js.map

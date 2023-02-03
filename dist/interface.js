@@ -26,3 +26,5 @@ let [user1, user2, ...restUsers] = [
 console.log(user1);
 console.log(user2);
 console.log(restUsers);
+// let result = restUsers.filter(user => user.id > 2)
+//# sourceMappingURL=interface.js.map
