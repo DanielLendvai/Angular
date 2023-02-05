@@ -4,13 +4,13 @@
 <!-- <div [hidden]="hideRooms">
   Number of rooms:
   <div [innerText]="numberOfRooms"></div>
-//document.getElementById("numberOfRooms").innerText = numberOfRooms; 
+// same as document.getElementById("numberOfRooms").innerText = numberOfRooms; 
 </div>
 -->
 <div>
   <p>Available Rooms: {{ rooms.availableRooms }}</p>
 </div>
-
+<!-- {{roomList | json}} // for debugging  -->
 <div *ngIf="rooms.availableRooms > 0">
   <!--   <div *ngFor="let room of roomList">
     {{ room.price }}
@@ -25,22 +25,31 @@
       <th>Room number:</th>
       <th>Room type:</th>
       <th>Room price:</th>
+      <th>Humidity in room:</th>
       <th>Amenities:</th>
+      <th>Rating:</th>
       <th>Check-in date:</th>
       <th>Check-out date:</th>
     </tr>
     <tr
       [ngClass]="getClass(room.type)"
-      *ngFor="let room of roomList; let e = even; let o = odd; let i = index"
+      *ngFor="
+        let room of roomList | slice : 0 : 3;
+        let e = even;
+        let o = odd;
+        let i = index
+      "
     >
       <td>{{ i }}</td>
       <td>{{ e ? "Even" : "Odd" }}</td>
       <td>{{ room.number }}</td>
       <td>{{ room.type }}</td>
-      <td>{{ room.price }}</td>
-      <td>{{ room.amenities }}</td>
-      <td>{{ room.checkoutTime }}</td>
-      <td>{{ room.checkinTime }}</td>
+      <td>{{ room.price | currency : "EUR" }}</td>
+      <td>{{ room.humidity | percent }}</td>
+      <td>{{ room.amenities | titlecase }}</td>
+      <td>{{ room.rating | number: '1.1-1'}}</td>
+      <td>{{ room.checkoutTime | date }}</td>
+      <td>{{ room.checkinTime | date : "fullDate" }}</td>
     </tr>
   </table>
 </div>

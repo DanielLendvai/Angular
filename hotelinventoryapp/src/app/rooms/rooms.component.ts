@@ -19,6 +19,8 @@ export class RoomsComponent {
   roomList: RoomList[] = [
     {
       number: 1,
+      rating: 4.1,
+      humidity: 0.2,
       type: 'Double',
       amenities: 'Minibar, room-service, television',
       price: 500,
@@ -28,6 +30,8 @@ export class RoomsComponent {
     },
     {
       number: 2,
+      rating: 3.4,
+      humidity: 0.25,
       type: 'Deluxe',
       amenities: 'Minibar, room-service, television, lorem, ipsum, tesus, meor, diolus',
       price: 1500,
@@ -37,6 +41,8 @@ export class RoomsComponent {
     },
     {
       number: 3,
+      rating: 4.2,
+      humidity: 0.22,
       type: 'Deluxe King',
       amenities: 'Minibar, room-service, television, lorem, ipsum, tesus, meor, diolus',
       price: 2000,
