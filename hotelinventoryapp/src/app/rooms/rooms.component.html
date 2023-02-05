@@ -18,7 +18,7 @@
     <img *ngIf="room.roomType === 'Deluxe'" src={{room.photos}} alt="" />
   </div> -->
 
-  <table>
+  <table class="table">
     <tr>
       <th>Index</th>
       <th>Even / Odd</th>
@@ -48,8 +48,8 @@
       <td>{{ room.humidity | percent }}</td>
       <td>{{ room.amenities | titlecase }}</td>
       <td>{{ room.rating | number: '1.1-1'}}</td>
-      <td>{{ room.checkoutTime | date }}</td>
       <td>{{ room.checkinTime | date : "fullDate" }}</td>
+      <td>{{ room.checkoutTime | date : "fullDate" }}</td>
     </tr>
   </table>
 </div>
