@@ -31,7 +31,7 @@ import { APP_CONFIG, APP_SERVICE_CONFIG } from './AppConfig/appconfig.service';
   providers: [
     {
       provide: APP_SERVICE_CONFIG,
-      useValue: APP_CONFIG
+      useValue: APP_CONFIG,
     }
   ],
   bootstrap: [AppComponent]
