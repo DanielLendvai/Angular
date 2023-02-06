@@ -1,5 +1,7 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, Optional, ViewChild, ViewContainerRef } from '@angular/core';
 import { RoomsComponent } from './rooms/rooms.component';
+import { localStorageToken } from './localstorage.token';
+import { LoggerService } from './logger.service';
 
 @Component({
   selector: 'hinv-root',
@@ -12,13 +14,21 @@ import { RoomsComponent } from './rooms/rooms.component';
 export class AppComponent implements OnInit {
   title = 'hotelinventoryapp';
   
-  @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;
+  @ViewChild('name', {static:true }) name!: ElementRef;
+
+  constructor(@Optional() private loggerService: LoggerService,
+  @Inject(localStorageToken) private localStorage: any) {
+
+  }
   
   // ngAfterViewInit() {
   //    const componentRef = this.vcr.createComponent(RoomsComponent);
   //    componentRef.instance.numberOfRooms = 20;
   // }
+  
   ngOnInit() {
+    this.loggerService?.log('AppComponent.ngOnInit()')
+    this.localStorage.setItem('name', 'Lorem Hotel')
 
   }
 }
