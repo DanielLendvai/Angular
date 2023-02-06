@@ -5,3 +5,23 @@
 
 /* Importing Datepicker SCSS file. */
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+img {
+    max-width: 200px;
+    max-height: 200px
+}
+.deluxe {
+    background-color: red;
+    color: white;
+}
+.deluxe-king {
+    background-color: steelblue;
+    color: white;
+}
+.double {
+    background-color: green;
+    color: white;
+}
+table,tr,td {
+    border: 1px groove black;
+}

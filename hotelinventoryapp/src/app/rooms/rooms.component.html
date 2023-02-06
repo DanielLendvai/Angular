@@ -1,59 +1,33 @@
 <!-- inline binding -->
 <h1>Welcome to {{ hotelName }}</h1>
 
+<div>
+  <p>Available Rooms: {{ rooms.availableRooms }}</p>
+</div>
+<!-- {{roomList | json}} // for debugging  -->
+
+<div *ngIf="selectedRoom">
+  {{selectedRoom | json}}
+</div>
+
+<div *ngIf="rooms.availableRooms > 0">
+  <hinv-rooms-list [rooms]="roomList" (selectedRoom)="selectRoom($event)">
+  </hinv-rooms-list>
+</div>
+
+<!-- event binding -->
+<button (click)="toggle()">Toggle</button>
+<!-- <button onClick="fnct" /> -->
+
+<!--   <div *ngFor="let room of roomList">
+  {{ room.price }}
+  {{ room.roomType }}
+  <img *ngIf="room.roomType === 'Deluxe'" src={{room.photos}} alt="" />
+</div> -->
+
 <!-- <div [hidden]="hideRooms">
   Number of rooms:
   <div [innerText]="numberOfRooms"></div>
 // same as document.getElementById("numberOfRooms").innerText = numberOfRooms; 
 </div>
 -->
-<div>
-  <p>Available Rooms: {{ rooms.availableRooms }}</p>
-</div>
-<!-- {{roomList | json}} // for debugging  -->
-<div *ngIf="rooms.availableRooms > 0">
-  <!--   <div *ngFor="let room of roomList">
-    {{ room.price }}
-    {{ room.roomType }}
-    <img *ngIf="room.roomType === 'Deluxe'" src={{room.photos}} alt="" />
-  </div> -->
-
-  <table class="table">
-    <tr>
-      <th>Index</th>
-      <th>Even / Odd</th>
-      <th>Room number:</th>
-      <th>Room type:</th>
-      <th>Room price:</th>
-      <th>Humidity in room:</th>
-      <th>Amenities:</th>
-      <th>Rating:</th>
-      <th>Check-in date:</th>
-      <th>Check-out date:</th>
-    </tr>
-    <tr
-      [ngClass]="getClass(room.type)"
-      *ngFor="
-        let room of roomList | slice : 0 : 3;
-        let e = even;
-        let o = odd;
-        let i = index
-      "
-    >
-      <td>{{ i }}</td>
-      <td>{{ e ? "Even" : "Odd" }}</td>
-      <td>{{ room.number }}</td>
-      <td>{{ room.type }}</td>
-      <td>{{ room.price | currency : "EUR" }}</td>
-      <td>{{ room.humidity | percent }}</td>
-      <td>{{ room.amenities | titlecase }}</td>
-      <td>{{ room.rating | number: '1.1-1'}}</td>
-      <td>{{ room.checkinTime | date : "fullDate" }}</td>
-      <td>{{ room.checkoutTime | date : "fullDate" }}</td>
-    </tr>
-  </table>
-</div>
-
-<!-- event binding -->
-<button (click)="toggle()">Toggle</button>
-<!-- <button onClick="fnct" /> -->

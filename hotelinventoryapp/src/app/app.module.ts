@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RatingModule } from 'ngx-bootstrap/rating';
+import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
 
 @NgModule({
   //decorator - tells the compiler what modules are used.
   declarations: [
     //directives and pipes needs to be registered here.
     AppComponent,
-    RoomsComponent
+    RoomsComponent,
+    RoomsListComponent
   ],
   imports: [
     BrowserModule,
@@ -23,5 +25,6 @@ import { RatingModule } from 'ngx-bootstrap/rating';
   bootstrap: [AppComponent]
   //default root component
 })
+
 export class AppModule { }
 //default root module 
