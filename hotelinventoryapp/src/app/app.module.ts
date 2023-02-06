@@ -6,6 +6,9 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
+import { HeaderComponent } from './header/header.component';
+import { ContainerComponent } from './container/container.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 @NgModule({
   //decorator - tells the compiler what modules are used.
@@ -13,7 +16,10 @@ import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
     //directives and pipes needs to be registered here.
     AppComponent,
     RoomsComponent,
-    RoomsListComponent
+    RoomsListComponent,
+    HeaderComponent,
+    ContainerComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,

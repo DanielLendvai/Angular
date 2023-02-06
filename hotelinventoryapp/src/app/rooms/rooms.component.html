@@ -1,22 +1,34 @@
 <!-- inline binding -->
-<h1>Welcome to {{ hotelName }}</h1>
+<hinv-header></hinv-header>
 
 <div>
-  <p>Available Rooms: {{ rooms.availableRooms }}</p>
+  <div [hidden]="hideRooms">
+    Number of rooms:
+    <div [innerText]="numberOfRooms"></div>
+    <!-- same as document.getElementById("numberOfRooms").innerText = numberOfRooms;  -->
+  </div>
+  <button (click)="toggle()">Toggle</button>
+  <p>
+    Available Rooms:
+    {{ rooms.availableRooms > 0 ? rooms.availableRooms : "No rooms" }}
+  </p>
 </div>
 <!-- {{roomList | json}} // for debugging  -->
 
 <div *ngIf="selectedRoom">
-  {{selectedRoom | json}}
+  {{ selectedRoom | json }}
 </div>
-
+<div><button (click)="addRoom()">Add Room</button></div>
 <div *ngIf="rooms.availableRooms > 0">
-  <hinv-rooms-list [rooms]="roomList" (selectedRoom)="selectRoom($event)">
+  <hinv-rooms-list
+    [rooms]="roomList"
+    [title]="title"
+    (selectedRoom)="selectRoom($event)"
+  >
   </hinv-rooms-list>
 </div>
 
 <!-- event binding -->
-<button (click)="toggle()">Toggle</button>
 <!-- <button onClick="fnct" /> -->
 
 <!--   <div *ngFor="let room of roomList">
@@ -24,10 +36,3 @@
   {{ room.roomType }}
   <img *ngIf="room.roomType === 'Deluxe'" src={{room.photos}} alt="" />
 </div> -->
-
-<!-- <div [hidden]="hideRooms">
-  Number of rooms:
-  <div [innerText]="numberOfRooms"></div>
-// same as document.getElementById("numberOfRooms").innerText = numberOfRooms; 
-</div>
--->

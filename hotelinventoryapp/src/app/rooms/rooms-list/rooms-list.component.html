@@ -1,3 +1,4 @@
+<h2>{{title}}</h2>
 <table class="table">
   <tr>
     <th>Index</th>
@@ -16,7 +17,7 @@
   <tr
     [ngClass]="getClass(room.type)"
     *ngFor="
-      let room of rooms | slice : 0 : 3;
+      let room of rooms;
       let e = even;
       let o = odd;
       let i = index
