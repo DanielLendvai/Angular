@@ -9,13 +9,16 @@ import { RoomsComponent } from './rooms/rooms.component';
   styleUrls: ['./app.component.scss'],
   //styles: [`h1{color:green}`]
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit {
   title = 'hotelinventoryapp';
   
   @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;
   
-  ngAfterViewInit() {
-    const componentRef = this.vcr.createComponent(RoomsComponent);
-    componentRef.instance.numberOfRooms = 20;
+  // ngAfterViewInit() {
+  //    const componentRef = this.vcr.createComponent(RoomsComponent);
+  //    componentRef.instance.numberOfRooms = 20;
+  // }
+  ngOnInit() {
+
   }
 }
