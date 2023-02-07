@@ -4,8 +4,8 @@ export interface Room {
   bookedRooms: number;
 }
 export interface RoomList {
-  number: number;
-  type: string;
+  number: string;
+  roomType: string;
   humidity: number;
   rating: number;   
   amenities: string;

@@ -19,9 +19,9 @@ import { RoomList } from '../rooms';
 export class RoomsListComponent implements OnInit, OnChanges {
   getClass(name: string) {
     switch (name) {
-      case 'Deluxe':
+      case 'Deluxe Room':
         return 'deluxe';
-      case 'Double':
+      case 'Private Suite':
         return 'double';
       case 'Deluxe King':
         return 'deluxe-king';

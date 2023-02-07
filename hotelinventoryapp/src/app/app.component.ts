@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   //    const componentRef = this.vcr.createComponent(RoomsComponent);
   //    componentRef.instance.numberOfRooms = 20;
   // }
-  
+
   ngOnInit() {
     this.loggerService?.log('AppComponent.ngOnInit()')
     this.localStorage.setItem('name', 'Lorem Hotel')

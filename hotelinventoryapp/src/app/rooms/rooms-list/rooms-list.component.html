@@ -15,7 +15,7 @@
     <th>Select Room</th>
   </tr>
   <tr
-    [ngClass]="getClass(room.type)"
+    [ngClass]="getClass(room.roomType)"
     *ngFor="
       let room of rooms;
       let e = even;
@@ -26,7 +26,7 @@
     <td>{{ i }}</td>
     <td>{{ e ? "Even" : "Odd" }}</td>
     <td>{{ room.number }}</td>
-    <td>{{ room.type }}</td>
+    <td>{{ room.roomType }}</td>
     <td>{{ room.price | currency : "EUR" }}</td>
     <td>{{ room.humidity | percent }}</td>
     <td>{{ room.amenities | titlecase }}</td>

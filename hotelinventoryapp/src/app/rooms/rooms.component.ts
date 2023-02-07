@@ -1,4 +1,14 @@
-import { AfterViewChecked, AfterViewInit, Component, OnInit, QueryList, SkipSelf, ViewChild, ViewChildren } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  OnInit,
+  QueryList,
+  SkipSelf,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
+import { Observable } from 'rxjs';
 import { HeaderComponent } from '../header/header.component';
 import { Room, RoomList } from './rooms';
 import { RoomsService } from './services/rooms.service';
@@ -25,25 +35,41 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   roomList: RoomList[] = [];
 
+  stream = new Observable((observer) => {
+    observer.next('user1');
+    observer.next('user2');
+    observer.next('user3');
+    observer.complete();
+    observer.error('error'); 
+  });
+
   @ViewChild(HeaderComponent)
   headerComponent!: HeaderComponent;
 
-  @ViewChildren(HeaderComponent) headerChildrenComponent!: QueryList<HeaderComponent>
-  
+  @ViewChildren(HeaderComponent)
+  headerChildrenComponent!: QueryList<HeaderComponent>;
+
   // roomService = new RoomsService();
-  //should never inject a component  
+  //should never inject a component
   constructor(@SkipSelf() private roomsService: RoomsService) {}
-  
+
   ngOnInit(): void {
-    this.roomList = this.roomsService.getRooms();
+    this.stream.subscribe({
+      next: (value) => console.log(value),
+      complete: () => console.log("complete"),
+      error: (err)=> console.log(err)
+    })
+    this.stream.subscribe((data=>console.log(data)))
+    this.roomsService.getRooms().subscribe((rooms) => {
+      this.roomList = rooms;
+    });
   }
 
   ngAfterViewInit(): void {
     // this.headerComponent.title = 'Rooms View';
     // this.headerChildrenComponent.last.title = "Last title"
   }
-  ngAfterViewChecked(): void {
-  }
+  ngAfterViewChecked(): void {}
 
   toggle() {
     this.hideRooms = !this.hideRooms;
@@ -55,10 +81,10 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   addRoom() {
     const room: RoomList = {
-      number: 4,
+      number: '4',
       rating: 4.2,
       humidity: 0.22,
-      type: 'Deluxe King',
+      roomType: 'Deluxe Room',
       amenities: 'Minibar, room-service, television, lorem, ipsum, tesusmeor',
       price: 2000,
       photos:
