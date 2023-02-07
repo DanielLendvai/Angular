@@ -9,7 +9,7 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { HeaderComponent } from '../header/header.component';
 import { Room, RoomList } from './rooms';
 import { RoomsService } from './services/rooms.service';
@@ -55,6 +55,10 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   totalBytes = 0;
 
+  subscription !: Subscription;
+
+  rooms$ = this.roomsService.getRooms$;
+
   constructor(@SkipSelf() private roomsService: RoomsService) {}
 
   ngOnInit(): void {
@@ -85,9 +89,9 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
       error: (err) => console.log(err),
     });
     this.stream.subscribe((data) => console.log(data));
-    this.roomsService.getRooms$.subscribe((rooms) => {
-      this.roomList = rooms;
-    });
+    // this.roomsService.getRooms$.subscribe((rooms) => {
+    //   this.roomList = rooms;
+    // });
   }
 
   ngAfterViewInit(): void {
@@ -149,5 +153,11 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
         this.roomList = data;
         console.log(this.roomList);
       });
+  }
+  //commonly used way to unsubscribe from a stream. 
+  ngOnDestroy() {
+    if(this.subscription){
+      this.subscription.unsubscribe();
+    }
   }
 }

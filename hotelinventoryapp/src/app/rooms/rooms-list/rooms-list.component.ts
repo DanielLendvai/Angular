@@ -30,7 +30,7 @@ export class RoomsListComponent implements OnInit, OnChanges {
     }
   }
 
-  @Input() rooms: RoomList[] = [];
+  @Input() rooms: RoomList[] | null = [] ;
   @Input() title: string = '';
 
   @Output() selectedRoom = new EventEmitter<RoomList>();
