@@ -1,3 +1,4 @@
+import { HttpEventType } from '@angular/common/http';
 import {
   AfterViewChecked,
   AfterViewInit,
@@ -51,9 +52,33 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   // roomService = new RoomsService();
   //should never inject a component
+
+  totalBytes = 0;
+
   constructor(@SkipSelf() private roomsService: RoomsService) {}
 
   ngOnInit(): void {
+    this.roomsService.getPhotos().subscribe((event) => {
+      switch (event.type) {
+        case HttpEventType.Sent: {
+          console.log('req has been made');
+          break;
+        }
+        case HttpEventType.ResponseHeader: {
+          console.log('req success');
+          break;
+        }
+        case HttpEventType.DownloadProgress : {
+          this.totalBytes += event.loaded;
+          break;
+        }
+        case HttpEventType.Response: {
+          console.log(event.body)
+          break;
+        }
+      }
+    });
+
     this.stream.subscribe({
       next: (value) => console.log(value),
       complete: () => console.log('complete'),
@@ -95,7 +120,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     this.roomsService.addRoom(room).subscribe((data) => {
       this.roomList = data;
     });
-    console.log(this.roomList)
+    console.log(this.roomList);
     // this.roomList.push(room) - not immutable
     // this.roomList = [...this.roomList, room];
   }
@@ -115,12 +140,14 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     };
     this.roomsService.editRoom(room).subscribe((data) => {
       this.roomList = data;
-    })
+    });
   }
-  deleteRoom(){
-    this.roomsService.delete('12b9e4df-1e00-4d96-b5d9-889999ebbeed').subscribe((data)=>{
-      this.roomList = data;
-      console.log(this.roomList)
-    })
+  deleteRoom() {
+    this.roomsService
+      .delete('12b9e4df-1e00-4d96-b5d9-889999ebbeed')
+      .subscribe((data) => {
+        this.roomList = data;
+        console.log(this.roomList);
+      });
   }
 }
