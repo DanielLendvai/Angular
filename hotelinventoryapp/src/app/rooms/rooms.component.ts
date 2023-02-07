@@ -40,7 +40,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     observer.next('user2');
     observer.next('user3');
     observer.complete();
-    observer.error('error'); 
+    observer.error('error');
   });
 
   @ViewChild(HeaderComponent)
@@ -56,10 +56,10 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   ngOnInit(): void {
     this.stream.subscribe({
       next: (value) => console.log(value),
-      complete: () => console.log("complete"),
-      error: (err)=> console.log(err)
-    })
-    this.stream.subscribe((data=>console.log(data)))
+      complete: () => console.log('complete'),
+      error: (err) => console.log(err),
+    });
+    this.stream.subscribe((data) => console.log(data));
     this.roomsService.getRooms().subscribe((rooms) => {
       this.roomList = rooms;
     });
@@ -81,7 +81,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   addRoom() {
     const room: RoomList = {
-      number: '4',
+      // number: '4',
       rating: 4.2,
       humidity: 0.22,
       roomType: 'Deluxe Room',
@@ -92,8 +92,35 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
       checkinTime: new Date('20-Dec-2015'),
       checkoutTime: new Date('25-Dec-2015'),
     };
-
+    this.roomsService.addRoom(room).subscribe((data) => {
+      this.roomList = data;
+    });
+    console.log(this.roomList)
     // this.roomList.push(room) - not immutable
-    this.roomList = [...this.roomList, room];
+    // this.roomList = [...this.roomList, room];
+  }
+
+  editRoom() {
+    const room: RoomList = {
+      roomNumber: '3',
+      rating: 4.2,
+      humidity: 0.22,
+      roomType: 'Deluxe Room',
+      amenities: 'Minibar, room-service, television, lorem, ipsum, tesusmeor',
+      price: 2000,
+      photos:
+        'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&w=1000&q=80',
+      checkinTime: new Date('20-Dec-2015'),
+      checkoutTime: new Date('25-Dec-2015'),
+    };
+    this.roomsService.editRoom(room).subscribe((data) => {
+      this.roomList = data;
+    })
+  }
+  deleteRoom(){
+    this.roomsService.delete('12b9e4df-1e00-4d96-b5d9-889999ebbeed').subscribe((data)=>{
+      this.roomList = data;
+      console.log(this.roomList)
+    })
   }
 }
