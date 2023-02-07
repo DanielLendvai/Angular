@@ -1,2 +1,2 @@
 # Angular
-Examples to learn angular with typescript
+Examples to learn angular / typescript
