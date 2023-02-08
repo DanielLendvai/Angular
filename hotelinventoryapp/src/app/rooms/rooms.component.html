@@ -15,7 +15,12 @@
 </div>
 <!-- {{roomList | json}} // for debugging  -->
 
-<h1>{{getError$ | async}}</h1>
+<h1>
+  <!-- {{getError$ | async}} -->
+Number of Rooms: {{roomsCount$ | async}}
+</h1>
+
+
 <div *ngIf="selectedRoom">
   {{ selectedRoom | json }}
 </div>

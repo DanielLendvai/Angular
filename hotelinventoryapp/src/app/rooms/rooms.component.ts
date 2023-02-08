@@ -9,7 +9,7 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { catchError, Observable, of, Subject, Subscription } from 'rxjs';
+import { catchError, map, Observable, of, Subject, Subscription } from 'rxjs';
 import { HeaderComponent } from '../header/header.component';
 import { Room, RoomList } from './rooms';
 import { RoomsService } from './services/rooms.service';
@@ -67,6 +67,10 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
       return of([]);
     })
   );
+
+    roomsCount$ = this.roomsService.getRooms$.pipe(
+      map((rooms)=> rooms.length)
+    )
 
   constructor(@SkipSelf() private roomsService: RoomsService) {}
 
