@@ -1,9 +1,9 @@
 <!-- <hinv-rooms></hinv-rooms> -->
-<hinv-rooms> </hinv-rooms>
-<hinv-container>
+<!-- <hinv-rooms> </hinv-rooms> -->
+<!-- <hinv-container>
   <hinv-employee> </hinv-employee>
   <h1>This is from ng-content</h1>
-</hinv-container>
+</hinv-container> -->
 <!-- <div [ngSwitch]="role">
     <div *ngSwitchCase="'User'">
         Welcome to the site, User!
@@ -15,6 +15,7 @@
         You are not logged in.
     </div>
 </div>  -->
-<div>
-  <!-- <ng-template #user></ng-template> -->
-</div>
+<!-- <ng-template #user></ng-template> -->
+<a [routerLink]="'rooms'">Rooms</a>
+<a [routerLink]="'employee'">Employee</a>
+<router-outlet></router-outlet>
