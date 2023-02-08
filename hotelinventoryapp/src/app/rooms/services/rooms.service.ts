@@ -15,10 +15,8 @@ import { shareReplay } from 'rxjs';
 })
 export class RoomsService {
   roomList: RoomList[] = [];
-  headers = new HttpHeaders({ token: '12345' }); //to pass header information(token) to request
-  getRooms$ = this.http
-    .get<RoomList[]>('api/rooms', { headers: this.headers })
-    .pipe(shareReplay(1));
+  // headers = new HttpHeaders({ token: '12345' }); //to pass header information(token) to request
+  getRooms$ = this.http.get<RoomList[]>('api/rooms').pipe(shareReplay(1));
 
   constructor(
     @Inject(APP_SERVICE_CONFIG) private config: AppConfig,
@@ -32,9 +30,7 @@ export class RoomsService {
     return this.http.get<RoomList[]>('/api/rooms', {});
   }
   addRoom(room: RoomList) {
-    return this.http.post<RoomList[]>('/api/rooms', room, {
-      headers: this.headers,
-    });
+    return this.http.post<RoomList[]>('/api/rooms', room);
   }
   editRoom(room: RoomList) {
     return this.http.put<RoomList[]>(`/api/rooms/${room.roomNumber}`, room);
