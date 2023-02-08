@@ -38,7 +38,7 @@ export class RoomsListComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    // console.log(changes);
+    //  console.log(changes);
     
   }
 

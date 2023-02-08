@@ -35,7 +35,9 @@
     <td>{{ room.checkinTime | date : "fullDate" }}</td>
     <td>{{ room.checkoutTime | date : "fullDate" }}</td>
     <td>
-      <button class="btn btn-primary" (click)="selectRoom(room)">Select</button>
+      <!-- <button class="btn btn-primary" (click)="selectRoom(room)">Select</button>
+       -->
+       <button class="btn btn-primary" [routerLink]="['/rooms', room.roomNumber]">Book room</button>
     </td>
   </tr>
 </table>

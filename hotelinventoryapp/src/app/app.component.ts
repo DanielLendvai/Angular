@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
     @Inject(localStorageToken) private localStorage: any,
     private initService: InitService
   ) {
-    console.log(initService.config);
+    // console.log(initService.config);
   }
 
   // ngAfterViewInit() {

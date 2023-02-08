@@ -57,7 +57,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   subscription!: Subscription;
 
-  error$ = new Subject<string>;
+  error$ = new Subject<string>();
   getError$ = this.error$.asObservable();
 
   rooms$ = this.roomsService.getRooms$.pipe(
@@ -68,9 +68,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     })
   );
 
-    roomsCount$ = this.roomsService.getRooms$.pipe(
-      map((rooms)=> rooms.length)
-    )
+  roomsCount$ = this.roomsService.getRooms$.pipe(map((rooms) => rooms.length));
 
   constructor(@SkipSelf() private roomsService: RoomsService) {}
 
@@ -90,7 +88,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
           break;
         }
         case HttpEventType.Response: {
-          console.log(event.body);
+          // console.log(event.body);
           break;
         }
       }
@@ -101,7 +99,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
       complete: () => console.log('complete'),
       error: (err) => console.log(err),
     });
-    this.stream.subscribe((data) => console.log(data));
+    // this.stream.subscribe((data) => console.log(data));
     // this.roomsService.getRooms$.subscribe((rooms) => {
     //   this.roomList = rooms;
     // });
@@ -137,7 +135,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     this.roomsService.addRoom(room).subscribe((data) => {
       this.roomList = data;
     });
-    console.log(this.roomList);
+    // console.log(this.roomList);
     // this.roomList.push(room) - not immutable
     // this.roomList = [...this.roomList, room];
   }
@@ -160,11 +158,22 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     });
   }
   deleteRoom() {
+    const room: RoomList = {
+      // number: '4',
+      rating: 4.2,
+      humidity: 0.22,
+      roomType: 'Deluxe Room',
+      amenities: 'Minibar, room-service, television, lorem, ipsum, tesusmeor',
+      price: 2000,
+      photos:
+        'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&w=1000&q=80',
+      checkinTime: new Date('20-Dec-2015'),
+      checkoutTime: new Date('25-Dec-2015'),
+    };
     this.roomsService
-      .delete('12b9e4df-1e00-4d96-b5d9-889999ebbeed')
+      .delete('b0711498-7566-4bbe-9913-45bdb332bb8f')
       .subscribe((data) => {
         this.roomList = data;
-        console.log(this.roomList);
       });
   }
   //commonly used way to unsubscribe from a stream.
