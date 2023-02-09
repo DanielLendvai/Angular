@@ -52,6 +52,9 @@ is the form valid? {{ roomsForm.valid | json }}
       >
         Amenities must be between 5 - 25 characters
       </div>
+      <div *ngIf="roomamenities.dirty && roomamenities.errors?.['required']">
+        Please provide the amenities!
+      </div>
     </div>
     <div class="form-group">
       <input

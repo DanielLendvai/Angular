@@ -158,20 +158,9 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     });
   }
   deleteRoom() {
-    const room: RoomList = {
-      // number: '4',
-      rating: 4.2,
-      humidity: 0.22,
-      roomType: 'Deluxe Room',
-      amenities: 'Minibar, room-service, television, lorem, ipsum, tesusmeor',
-      price: 2000,
-      photos:
-        'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjl8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHw%3D&w=1000&q=80',
-      checkinTime: new Date('20-Dec-2015'),
-      checkoutTime: new Date('25-Dec-2015'),
-    };
+    
     this.roomsService
-      .delete('b0711498-7566-4bbe-9913-45bdb332bb8f')
+      .delete('d1fe6d0f-e7c7-470a-b681-63ae2a04febf')
       .subscribe((data) => {
         this.roomList = data;
       });
