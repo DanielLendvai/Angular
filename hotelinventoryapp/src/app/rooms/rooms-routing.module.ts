@@ -5,13 +5,18 @@ import { RoomsBookingComponent } from './rooms-booking/rooms-booking.component';
 import { RoomsComponent } from './rooms.component';
 
 const routes: Routes = [
-  { path: 'rooms', component: RoomsComponent },
-  { path: 'rooms/add', component: RoomsAddComponent },
-  { path: 'rooms/:roomid', component: RoomsBookingComponent }, 
+  {
+    path: 'rooms',
+    component: RoomsComponent,
+    children: [
+      { path: 'add', component: RoomsAddComponent },
+      { path: ':roomid', component: RoomsBookingComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class RoomsRoutingModule { }
+export class RoomsRoutingModule {}

@@ -158,9 +158,8 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     });
   }
   deleteRoom() {
-    
     this.roomsService
-      .delete('d1fe6d0f-e7c7-470a-b681-63ae2a04febf')
+      .delete('1')
       .subscribe((data) => {
         this.roomList = data;
       });

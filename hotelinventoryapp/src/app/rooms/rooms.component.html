@@ -24,7 +24,10 @@ Number of Rooms: {{roomsCount$ | async}}
 <div *ngIf="selectedRoom">
   {{ selectedRoom | json }}
 </div>
-<div><button (click)="addRoom()">Add Room</button></div>
+
+<router-outlet></router-outlet>
+
+<div><button routerLink="add">Add Room</button></div>
 
 
 <div *ngIf="rooms$ | async as rooms" [hidden]="hideRooms">
