@@ -3,7 +3,7 @@ is the form valid? {{ roomsForm.valid | json }}
 <div *ngIf="successMessage !== ''" class="alert alert-success">
   {{ successMessage }}
 </div>
-<form #roomsForm="ngForm" (ngSubmit)="AddRoom()">
+<form #roomsForm="ngForm" (ngSubmit)="AddRoom(roomsForm)">
   <div>
     <div class="form-group">
       <input
