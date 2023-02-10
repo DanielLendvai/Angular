@@ -29,7 +29,6 @@ Number of Rooms: {{roomsCount$ | async}}
 
 <div><button routerLink="add">Add Room</button></div>
 
-
 <div *ngIf="rooms$ | async as rooms" [hidden]="hideRooms">
   <hinv-rooms-list
     [rooms]="rooms"

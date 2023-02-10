@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12">
+          <h1> To-Do app </h1>
+      </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-xs-8">
+        <input type="text" class="form-control" name="task" placeholder="Task" #taskInput>
+      </div>
+
+      <div class="col-xs-4">
+          <button class="btn btn-info bt-xm">Add</button>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="col-xs-12">
+          <table class="table table-striped">
+              <thead>
+                  <tr>
+                      <th>To-Do list</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let task of tasks; let idx = index">
+                  <td >{{ idx + 1 }}. {{task.title}}</td>
+                  <td>
+                    <button class="btn btn-danger btn-xs" (click)="deleteTask(idx)"> Delete </button>
+                </td>
+               </tr>
+              </tbody>
+              <tfoot>
+                  <tr>
+                          <button class="btn btn-danger btn-xm" (click)="clearToDo()">Clear</button>
+                          <button class="btn btn-info btn-xm" (click)="addTask(taskInput.value)">Add</button>
+
+                  </tr>
+              </tfoot>
+          </table>
+      </div>
+  </div>
+</div>
