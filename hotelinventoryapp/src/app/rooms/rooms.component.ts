@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { catchError, map, Observable, of, Subject, Subscription } from 'rxjs';
 import { HeaderComponent } from '../header/header.component';
+import { ConfigService } from '../services/config.service';
 import { Room, RoomList } from './rooms';
 import { RoomsService } from './services/rooms.service';
 
@@ -70,7 +71,10 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   roomsCount$ = this.roomsService.getRooms$.pipe(map((rooms) => rooms.length));
 
-  constructor(@SkipSelf() private roomsService: RoomsService) {}
+  constructor(
+    @SkipSelf() private roomsService: RoomsService,
+    private configService: ConfigService
+  ) {}
 
   ngOnInit(): void {
     this.roomsService.getPhotos().subscribe((event) => {
@@ -158,11 +162,9 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     });
   }
   deleteRoom() {
-    this.roomsService
-      .delete('1')
-      .subscribe((data) => {
-        this.roomList = data;
-      });
+    this.roomsService.delete('1').subscribe((data) => {
+      this.roomList = data;
+    });
   }
   //commonly used way to unsubscribe from a stream.
   ngOnDestroy() {

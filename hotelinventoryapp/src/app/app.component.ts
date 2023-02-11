@@ -12,6 +12,7 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { localStorageToken } from './localstorage.token';
 import { LoggerService } from './logger.service';
 import { InitService } from './init.service';
+import { ConfigService } from './services/config.service';
 
 @Component({
   selector: 'hinv-root',
@@ -29,6 +30,7 @@ export class AppComponent implements OnInit {
   constructor(
     @Optional() private loggerService: LoggerService,
     @Inject(localStorageToken) private localStorage: any,
+    private configService: ConfigService,
     private initService: InitService
   ) {
     // console.log(initService.config);
