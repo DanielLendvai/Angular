@@ -11,6 +11,11 @@ const routes: Routes = [
     component: EmployeeComponent,
   },
   { path: 'login', component: LoginComponent },
+  {
+    path: 'rooms',
+    loadChildren: () =>
+      import('./rooms/rooms.module').then((m) => m.RoomsModule),
+  },
   { path: '', redirectTo: '/login', pathMatch: 'full' }, //default url
   { path: '**', component: NotfoundComponent }, //not existing url
 ];
