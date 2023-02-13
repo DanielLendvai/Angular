@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="title">
+    <h1>To-Do app</h1>
+  </div>
+  <div class="input-container">
+    <input
+      type="text"
+      class="form-control"
+      name="task"
+      placeholder="Task"
+      #taskInput
+    />
+    <div>
+      <button class="btn btn-info" (click)="addTask(taskInput)">Add</button>
+    </div>
+  </div>
+
+  <div *ngFor="let task of tasks; let idx = index">
+    <p>{{ idx + 1 }}. {{ task.title }}</p>
+    <div class="buttons">
+      <button class="btn btn-danger btn-xs" (click)="deleteTask(idx)">
+        Delete
+      </button>
+      <button class="btn btn-primary btn-xs" (click)="editTask(idx)">
+        Edit
+      </button>
+    </div>
+  </div>
+  <button class="btn btn-danger btn-xm" (click)="clearToDo()">Clear</button>
+
+  <router-outlet></router-outlet>
+</div>
