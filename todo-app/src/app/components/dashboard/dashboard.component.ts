@@ -4,6 +4,7 @@ interface Task {
   title: string;
   is_canceled: boolean;
 }
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
