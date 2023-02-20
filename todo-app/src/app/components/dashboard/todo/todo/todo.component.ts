@@ -53,7 +53,7 @@ export class TodoComponent {
       this.tasks.splice(idx, 1);
     }
   }
- 
+  
   editTask(idx: number){
     let title = this.tasks[idx].title;
     let result = prompt("Edit Task Title", title);
