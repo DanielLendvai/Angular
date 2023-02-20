@@ -1,4 +1,4 @@
-<label for="">{{ serverName }}</label>
+<label for="">Server Name </label>
 <!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)" /> -->
 <input type="text" class="form-control" [(ngModel)]="serverName" />
 <button
@@ -13,3 +13,6 @@
 <app-server></app-server>
 <app-success-alert></app-success-alert>
 <app-warning-alert></app-warning-alert>
+<button class="btn btn-primary" (click)="userName = ''" [disabled]="userName === ''">Reset username</button>
+<input type="text" [(ngModel)]="userName">
+<p>{{userName}}</p>
