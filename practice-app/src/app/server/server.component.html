@@ -1,1 +1,4 @@
-<p>server works!</p>
+<p>ID > 5 = offline <br> ID < 5 = online </p>
+<input type="text" [(ngModel)]="serverId">
+<p>Server with ID {{serverId}} is {{getServerStatus()}}</p>
+
