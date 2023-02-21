@@ -9,23 +9,26 @@ export class ServersComponent {
   allowNewServer = false;
   emptyUsername = false;
   serverCreationStatus = 'no server was created';
-  serverName = '22222';
+  serverName = '';
   userName = '';
   serverCreated = false;
-  
+  servers = ['testserver1', 'testserver2'];
+
+    
   
   constructor() {
-  
-    setTimeout(()=> {
+    setTimeout(() => {
       this.allowNewServer = true;
-    },2000)
+    }, 2000);
   }
-  onCreateServer() { 
+  onCreateServer() {
     this.serverCreated = true;
-    this.serverCreationStatus = 'server was created. Name is ' + this.serverName; 
+    this.servers.push(this.serverName);
+    this.serverCreationStatus =
+      'server was created. Name is ' + this.serverName;
   }
   onUpdateServerName(event: any) {
-    console.log(event)
+    console.log(event);
     this.serverName = event.target.value;
   }
   // resetUsername() {

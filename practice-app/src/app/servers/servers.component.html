@@ -10,13 +10,15 @@
 </button>
 <!-- <p [innerText]="allowNewServer"></p> -->
 <!-- {{ serverCreationStatus }} -->
-<p *ngIf="serverCreated; else noServer">server was created, the name is {{ serverName }}</p>
+<p *ngIf="serverCreated; else noServer">
+  server was created, the name is {{ serverName }}
+</p>
 <ng-template #noServer>
   <p>No server was created</p>
 </ng-template>
-<app-server></app-server>
-<app-success-alert></app-success-alert>
-<app-warning-alert></app-warning-alert>
+<app-server *ngFor="let server of servers"></app-server>
+
+
 <button
   class="btn btn-primary"
   (click)="userName = ''"

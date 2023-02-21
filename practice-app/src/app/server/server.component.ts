@@ -17,6 +17,7 @@ export class ServerComponent {
   }
   getServerStatus(): string {
     return this.serverStatus;
+    
     // if(this.serverId > 5){
     //   return this.serverStatus
     // }
