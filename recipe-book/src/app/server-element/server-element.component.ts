@@ -4,7 +4,9 @@ import {
   AfterViewChecked,
   AfterViewInit,
   Component,
+  ContentChild,
   DoCheck,
+  ElementRef,
   Input,
   OnChanges,
   OnDestroy,
@@ -25,6 +27,7 @@ export class ServerElementComponent
   constructor() {
     console.log("constructor called");
   }
+  @ContentChild('contentParagraph') paragraph: ElementRef; //works only after ngAfterContentInit
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
