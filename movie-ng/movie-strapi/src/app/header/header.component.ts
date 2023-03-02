@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-header',
   template: `
     <section class="header">
-      <div class="headerName">MovieFlix</div>
+      <div class="headerName">Movies</div>
     </section>
   `,
   styles: [

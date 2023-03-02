@@ -24,7 +24,7 @@ import {
             <span>
               <button
                 style="margin-left: 0;"
-                class="btn"
+                class="btn btn-primary"
                 (click)="showEditMovieDialog()"
               >
                 Edit

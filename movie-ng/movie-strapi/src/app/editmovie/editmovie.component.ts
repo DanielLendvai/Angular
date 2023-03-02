@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 @Component({
-  selector: "app-editmovie",
+  selector: 'app-editmovie',
   template: `
     <div class="modal">
       <div class="modal-backdrop" (click)="closeModal()"></div>
@@ -16,7 +16,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
           <div class="inputField">
             <div class="label"><label>Name</label></div>
             <div>
-              <input id="addMovieName" type="text" value="{{ movie?.name }}" />
+              <input
+                id="addMovieName"
+                type="text"
+                value="{{ movie?.attribute.name }}"
+              />
             </div>
           </div>
           <div class="inputField">
@@ -25,7 +29,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
               <input
                 id="addMovieImageUrl"
                 type="text"
-                value="{{ movie?.imageUrl }}"
+                value="{{ movie?.attribute.imageUrl }}"
               />
             </div>
           </div>
@@ -35,14 +39,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
               <input
                 id="addMovieSynopsis"
                 type="text"
-                value="{{ movie?.synopsis }}"
+                value="{{ movie?.attribute.synopsis }}"
               />
             </div>
           </div>
           <div class="inputField">
             <div class="label"><label>Year</label></div>
             <div>
-              <input id="addMovieYear" type="text" value="{{ movie?.year }}" />
+              <input
+                id="addMovieYear"
+                type="text"
+                value="{{ movie?.attribute.year }}"
+              />
             </div>
           </div>
           <div class="inputField">
@@ -51,7 +59,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
               <input
                 id="addMovieGenre"
                 type="text"
-                value="{{ movie?.genre }}"
+                value="{{ movie?.attribute.genre }}"
               />
             </div>
           </div>
@@ -104,17 +112,19 @@ export class EditmovieComponent implements OnInit {
       addMovieSynopsis,
     } = window as any;
     this.http
-      .put("http://localhost:1337/api/movies/" + this.movie?.id, {
-        name: addMovieName.value,
-        year: addMovieYear.value,
-        synopsis: addMovieSynopsis.value,
-        imageUrl: addMovieImageUrl.value,
-        genre: addMovieGenre.value,
+      .put('http://localhost:1337/api/movies/' + this.movie?.id, {
+        data: {
+          name: addMovieName.value,
+          year: addMovieYear.value,
+          synopsis: addMovieSynopsis.value,
+          imageUrl: addMovieImageUrl.value,
+          genre: addMovieGenre.value,
+        },
       })
       .subscribe(
         (data) => {
           this.disable = false;
-          this.closeDialog.emit("");
+          this.closeDialog.emit('');
           window.location.reload();
         },
         (err) => {
@@ -123,6 +133,6 @@ export class EditmovieComponent implements OnInit {
       );
   }
   closeModal() {
-    this.closeDialog.emit("");
+    this.closeDialog.emit('');
   }
 }
