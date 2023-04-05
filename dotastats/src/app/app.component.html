@@ -1,10 +1,25 @@
 <div class="flex flex-col">
-
-  <div *ngFor="let matchData of data" class="flex justify-evenly w-full border-y-2">
-    <div class="flex justify-center items-center font-bold text-center w-full h-20">ID: {{ matchData.hero_id === 86 ? "Rubick" : matchData.hero_id }}</div>
-    <div class="flex justify-center items-center text-center w-full h-20">Kills: {{ matchData.kills > 0 ? matchData.kills : "NULLA"}}</div>
-    <div class="flex justify-center items-center text-center w-full h-20">Deaths: {{ matchData.deaths }}</div>
-    <div class="flex justify-center items-center text-center w-full h-20">Assists: {{ matchData.assists }}</div>
+  <div
+    *ngFor="let matchData of data"
+    class="flex justify-evenly w-full border-y-2"
+    [ngStyle]="getStyles(matchData)"
+  >
+    <div
+      class="flex justify-center items-center font-bold text-center w-full h-20"
+    >
+      ID: {{ matchData.hero_id === 86 ? "Rubick" : matchData.hero_id }}
+    </div>
+    <div class="flex justify-center items-center text-center w-full h-20">
+      Kills: {{ matchData.kills > 0 ? matchData.kills : "NULLA" }}
+    </div>
+    <div class="flex justify-center items-center text-center w-full h-20">
+      Deaths: {{ matchData.deaths }}
+    </div>
+    <div class="flex justify-center items-center text-center w-full h-20">
+      Assists: {{ matchData.assists }}
+    </div>
+    <div class="flex justify-center items-center text-center w-full h-20">
+      {{ matchData.gold_per_min }} Gold, {{ matchData.xp_per_min }} XP / minute
+    </div>
   </div>
-
 </div>

@@ -19,7 +19,10 @@ export class AppComponent implements OnInit {
     });
   }
 
-  selectDataById(id: number) {
-    
+  getStyles(data: any) {
+    return {
+      'background-color':
+        data.kills > 8 ? 'green' : data.deaths > 8 ? 'red' : 'transparent',
+    };
   }
 }
