@@ -22,7 +22,12 @@ export class AppComponent implements OnInit {
   getStyles(data: any) {
     return {
       'background-color':
-        data.kills > 8 ? 'green' : data.deaths > 8 ? 'red' : 'transparent',
+      data.kills > 8 ? 'green' : data.deaths > 10 ? 'red' : 'transparent',
+      color: data.kills > 8 ? 'white' : data.deaths > 10 ? 'white' : 'black',
+      'font-size': data.kills > 8 ? '20px' : data.deaths > 10 ? '20px' : '15px',
+      padding: '10px',
+      'border-radius': '5px',
+      'text-align': 'center',
     };
   }
 }
