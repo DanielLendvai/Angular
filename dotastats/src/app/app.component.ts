@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './services/data-service.service';
+import Hero from './interfaces/Heroes';
 
 @Component({
   selector: 'app-root',
@@ -7,22 +8,26 @@ import { DataService } from './services/data-service.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'dotastats';
 
-  data: any = [];
+  title = 'dotastats';
+  id: number = 0;
+  heroes: any;
+
+
   constructor(private dataService: DataService) {}
 
-  ngOnInit() {
-    this.dataService.getData().subscribe((data) => {
-      this.data = data;
-      console.log(this.data);
+  ngOnInit(): void {
+    this.dataService.getAllHeroes().subscribe(data => {
+      this.heroes = data;
+      console.log(this.heroes);
     });
   }
+
 
   getStyles(data: any) {
     return {
       'background-color':
-      data.kills > 8 ? 'green' : data.deaths > 10 ? 'red' : 'transparent',
+        data.kills > 8 ? 'green' : data.deaths > 10 ? 'red' : 'transparent',
       color: data.kills > 8 ? 'white' : data.deaths > 10 ? 'white' : 'black',
       'font-size': data.kills > 8 ? '20px' : data.deaths > 10 ? '20px' : '15px',
       padding: '10px',
