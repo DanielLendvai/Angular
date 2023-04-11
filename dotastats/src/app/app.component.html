@@ -1,29 +1,18 @@
-<div class="flex flex-col">
-<h1 class="font-semibold text-4xl text-center p-14">all heroes and their id's</h1>
+<div class="flex flex-col justify-evenly">
+  <h1 class="font-semibold text-4xl text-center p-14">
+    all heroes and their id's
+  </h1>
+  <div class="max-h-screen flex flex-col flex-wrap">
+    <div *ngFor="let hero of heroes" class="flex flex-col">
+      <div>ID: {{ hero.id }}</div>
+      <div>Name: {{ hero.name }}</div>
+    </div>
+    <br />
+  </div>
+  <h1 class="font-semibold text-4xl text-center p-14">Recent matches</h1>
 
-<p *ngFor="let item of heroes">{{ item.id }} - {{ item.name }}</p>
-
-  <!-- <div
-    *ngFor="let matchData of data"
-    class="flex justify-evenly w-full border-y-2"
-    [ngStyle]="getStyles(matchData)"
-  >
-    <div
-      class="flex justify-center items-center w-full h-20"
-    >
-      ID: {{ matchData.hero_id === 86 ? "Rubick" : matchData.hero_id }}
-    </div>
-    <div class="flex justify-center items-center  w-full h-20">
-      Kills: {{ matchData.kills > 0 ? matchData.kills : "NULLA" }}
-    </div>
-    <div class="flex justify-center items-center  w-full h-20">
-      Deaths: {{ matchData.deaths }}
-    </div>
-    <div class="flex justify-center items-center  w-full h-20">
-      Assists: {{ matchData.assists }}
-    </div>
-    <div class="flex justify-center items-center  w-full h-20">
-      {{ matchData.gold_per_min }} Gold, {{ matchData.xp_per_min }} XP / minute
-    </div>
-  </div> -->
+  <div *ngFor="let match of recentMatches" class="flex flex-col flex-wrap border-2">
+    <div>ID: {{ match.match_id }}</div>
+    <div>hero id: {{ match.hero_id }}</div>
+  </div>
 </div>
