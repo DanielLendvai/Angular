@@ -1,25 +1,15 @@
- <div class="flex flex-col justify-evenly">
-  <h1 class="font-semibold text-4xl text-center p-14">
-    all heroes and their id's
+<div class="flex flex-col flex-wrap justify-evenly gap-14">
+  <h1 class="text-center m-6">
+    <a routerLink="">Dota2</a>
   </h1>
-  <div class="max-h-screen flex flex-col flex-wrap">
-    <div *ngFor="let hero of heroes" class="flex flex-col">
-      <div>ID: {{ hero.id }}</div>
-      <div>Name: {{ hero.name }}</div>
+  <nav class="flex justify-evenly text-4xl">
+    <div>
+      <a routerLink="/heroes">Heroes</a>
     </div>
-    <br />
-  </div>
-  <h1 class="font-semibold text-4xl text-center p-14">Recent matches</h1>
-
-  <div *ngFor="let match of recentMatches" class="flex flex-col flex-wrap border-2">
-    <div>ID: {{ match.match_id }}</div>
-    <div *ngIf="match.hero_id">hero id: {{ match.hero_id }}</div>
-  </div>
+    <div>
+      <a routerLink="/recentMatches">My last 20 match</a>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+  <!--  -->
 </div>
- 
-
- <div *ngFor="let match of recentMatches">
-  <div *ngFor="let hero of heroes">
-    <div *ngIf="match.hero_id === hero.id">{{hero.name}}</div>
-  </div>
- </div>

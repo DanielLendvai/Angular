@@ -9,29 +9,9 @@ import Hero from './interfaces/Heroes';
 })
 export class AppComponent implements OnInit {
   title = 'dotastats';
-  id: number = 0;
-  heroes: any;
-  updatedArray: any;
-  recentMatches: any = [];
-  constructor(private dataService: DataService) {}
-
+  
   ngOnInit(): void {
-    this.dataService.getAllHeroes().subscribe((data) => {
-      this.heroes = data;
-      // console.log(this.heroes);
-    });
-    this.dataService.getRecentMatches().subscribe((data) => {
-      this.recentMatches = data;
-      // console.log(this.recentMatches);
-    });
-
-    const updatedArray = this.recentMatches.map((item: { id: any; }) => {
-      const nameObj = this.heroes.find((obj: { id: any; }) => obj.id === item.id);
-      return { ...item, name: nameObj ? nameObj.name : '' };
-    });
-    
-    // Assign the updated array to a component property to use it in the template
-    this.updatedArray = updatedArray;
+      
   }
 
   getStyles(data: any) {
