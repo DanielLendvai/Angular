@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-evenly">
+ <div class="flex flex-col justify-evenly">
   <h1 class="font-semibold text-4xl text-center p-14">
     all heroes and their id's
   </h1>
@@ -13,6 +13,13 @@
 
   <div *ngFor="let match of recentMatches" class="flex flex-col flex-wrap border-2">
     <div>ID: {{ match.match_id }}</div>
-    <div>hero id: {{ match.hero_id }}</div>
+    <div *ngIf="match.hero_id">hero id: {{ match.hero_id }}</div>
   </div>
 </div>
+ 
+
+ <div *ngFor="let match of recentMatches">
+  <div *ngFor="let hero of heroes">
+    <div *ngIf="match.hero_id === hero.id">{{hero.name}}</div>
+  </div>
+ </div>
